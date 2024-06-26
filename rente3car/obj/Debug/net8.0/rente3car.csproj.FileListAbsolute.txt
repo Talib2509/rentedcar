@@ -1,0 +1,14 @@
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.AssemblyInfoInputs.cache
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.AssemblyInfo.cs
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.csproj.CoreCompileInputs.cache
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\bin\Debug\net8.0\rente3car.exe
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\bin\Debug\net8.0\rente3car.deps.json
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\bin\Debug\net8.0\rente3car.runtimeconfig.json
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\bin\Debug\net8.0\rente3car.dll
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\bin\Debug\net8.0\rente3car.pdb
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.dll
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\refint\rente3car.dll
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.pdb
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.genruntimeconfig.cache
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\ref\rente3car.dll

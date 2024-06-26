@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C31124A-9F9A-451E-A7D8-C2296A00FCAF}|rente3car\\rente3car.csproj|c:\\users\\mirtalib\\source\\repos\\rente3car\\rente3car\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C31124A-9F9A-451E-A7D8-C2296A00FCAF}|rente3car\\rente3car.csproj|solutionrelative:rente3car\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C31124A-9F9A-451E-A7D8-C2296A00FCAF}|rente3car\\rente3car.csproj|c:\\users\\mirtalib\\source\\repos\\rente3car\\rente3car\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C31124A-9F9A-451E-A7D8-C2296A00FCAF}|rente3car\\rente3car.csproj|solutionrelative:rente3car\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "car.cs",
+              "DocumentMoniker": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\car.cs",
+              "RelativeDocumentMoniker": "rente3car\\car.cs",
+              "ToolTip": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\car.cs",
+              "RelativeToolTip": "rente3car\\car.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAswLUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T14:04:42.963Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\Program.cs",
+              "RelativeDocumentMoniker": "rente3car\\Program.cs",
+              "ToolTip": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\Program.cs",
+              "RelativeToolTip": "rente3car\\Program.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwCIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T13:59:53.737Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
