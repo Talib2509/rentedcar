@@ -12,3 +12,4 @@ C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\refint\rente
 C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.pdb
 C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.genruntimeconfig.cache
 C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\ref\rente3car.dll
+C:\Users\Mirtalib\source\repos\rente3car\rente3car\obj\Debug\net8.0\rente3car.sourcelink.json

@@ -45,8 +45,20 @@ namespace rente3car
             CustomerCount = 0;
         }
 
-        public void AddCar(car car)
+        
+        public void AddCar(car car, int banID)
         {
+
+            foreach (var item in Cars)
+            {
+                if (item != null && item.BanId == banID)
+                {
+                    Console.WriteLine("Bu ID ile maşın artıq mövcuddur.");
+                    return;
+                }
+            }
+
+     
             if (CarCount < 50)
             {
                 Cars[CarCount] = car;
@@ -54,27 +66,40 @@ namespace rente3car
             }
             else
             {
-                Console.WriteLine("Cannot add more than 50 cars.");
+                Console.WriteLine("50-den artıq maşın elave etmək mümkün deyil.");
             }
         }
 
         public void RemoveCar(int banID)
         {
-            int count = 0;
-            foreach (var item in Cars)
+        
+            bool check = false;
+            for (int i = 0; i < Cars.Length; i++)
             {
-                if (item.BanId == banID)
+                if (Cars[i] != null && Cars[i].BanId == banID)
                 {
-                    CarCount--;
-                    Cars[CarCount-1] = null;
+                    Cars[i] = null;
+                    check = true;
+                    Console.WriteLine("silindi");
                     break;
                 }
-                count++;
+            }
+            if (!check)
+            {
+                Console.WriteLine("Bu ID ile car mövcud deyil.");
             }
         }
 
-        public void AddCustomer(Customer customer)
+        public void AddCustomer(Customer customer,int customerID)
         {
+            foreach (var item in Customers)
+            {
+                if (item != null && item.CustomerId==customerID)
+                {
+                    Console.WriteLine("Bu ID ile customer artıq mövcuddur.");
+                    return;
+                }
+            }
             if (CustomerCount < 100)
             {
                 Customers[CustomerCount] = customer;
@@ -85,98 +110,138 @@ namespace rente3car
                 Console.WriteLine("Cannot add more than 100 customers.");
             }
         }
-
         public void RemoveCustomer(int customerID)
         {
-           
-            int count = 0;
-            foreach (var item in Customers)
+            bool check = false;
+            for (int i = 0; i < Customers.Length; i++)
             {
-                if (item.CustomerId == customerID)
+                if ( Customers[i]!=null && Customers[i].CustomerId == customerID)
                 {
-
-                    Cars[count] = null;
+                    Customers[i] = null;
+                    check = true;
+                    Console.WriteLine("silindi");
                     break;
                 }
-                count++;
-
+            }
+            if (!check)
+            {
+                Console.WriteLine("Bu ID ile müşteri mövcud deyil.");
             }
         }
-        public void RentACar(int customerID, int banID)
+
+
+
+
+
+        public void RentACar(int banID, int customerID)
         {
-            car car = new car();
-            bool check = true;
+            bool carFound = false;
+
+
             foreach (var item in Cars)
             {
-                if (item.BanId == banID)
+                if (item != null && item.BanId == banID && !item.IsRented)
                 {
-                    car = item;
                     item.IsRented = true;
-                    check = false;
+                    carFound = true;
                     break;
                 }
             }
-            if (check)
-            {
 
-                Console.WriteLine("gdgfg");
-            }
-            else
+
+            if (!carFound)
             {
-                check = true;
-                int ecount = 0;
-                foreach (var item in Customers)
+                Console.WriteLine("bele masin movcu deyil ve yada icareye verilib");
+                return;
+            }
+
+
+            foreach (var customer in Customers)
+            {
+                if (customer != null && customer.CustomerId == customerID)
                 {
-                    ecount++;
-                    if (item.CustomerId == customerID)
+
+                    if (customer.CarCount < 3)
                     {
-                        if (item.CarCount < 3)
+
+                        for (int i = 0; i < customer.RentedCars.Length; i++)
                         {
-                            item.CarCount++;
-                            item.RentedCars[ecount] = car;
-                            check = false;
-                            break;
+                            if (customer.RentedCars[i] == null)
+                            {
+
+                                car rentedCar = Array.Find(Cars, c => c != null && c.BanId == banID);
+                                if (rentedCar != null)
+                                {
+                                    customer.RentedCars[i] = rentedCar;
+                                    customer.CarCount++;
+                                    Console.WriteLine("Maşın müşteriye uğurla kiraye verildi.");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Müşteri maksimum maşın limitine çatıb.");
+                        return;
+                    }
+                }
+            }
+
+
+            Console.WriteLine("Bele bir müşteri tapılmadı.");
+        }
+
+        public void ReturnCar(int banID, int customerID)
+        {
+            bool carFound = false;
+
+
+            foreach (var item in Cars)
+            {
+                if (item != null && item.BanId == banID)
+                {
+                    item.IsRented = false;
+                    carFound = true;
+                    break;
+                }
+            }
+
+            if (!carFound)
+            {
+                Console.WriteLine("Bele bir maşın tapılmadı.");
+                return;
+            }
+
+
+            bool customerFound = false;
+            foreach (var customer in Customers)
+            {
+                if (customer != null && customer.CustomerId == customerID)
+                {
+                    customerFound = true;
+
+                    for (int i = 0; i < customer.RentedCars.Length; i++)
+                    {
+                        if (customer.RentedCars[i] != null && customer.RentedCars[i].BanId == banID)
+                        {
+                            customer.RentedCars[i] = null;
+                            customer.CarCount--;
+                            Console.WriteLine("Maşın icaredən qaytarıldı.");
+                            return;
                         }
                     }
                 }
             }
 
+
+            if (!customerFound)
+            {
+                Console.WriteLine("Bele bir müşteri tapılmadı.");
+            }
         }
 
-        public void ReturnCar(int customerID, int banID)
-        {
-            car car = new car();
-            bool check = true;
-            foreach (var item in Cars)
-            {
-                if (item.BanId == banID)
-                {
-                    car = item;
-                    item.IsRented = false;
-                    check = false;
-                    break;
-                }
-            }
-            if (check)
-            {
 
-                Console.WriteLine("gdgfg");
-            }
-            else
-            {
-                check = true;
-                int ecount = 0;
-                foreach (var item in Customers)
-                {
-                    ecount++;
-                    if (item.CustomerId == customerID)
-                    {
-                        item.CarCount--;
-                        item.RentedCars[ecount] = null;
-                        check = false; break;
-                    }
-                }
-            }
-        }
+
     }
 }

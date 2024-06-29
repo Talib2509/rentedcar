@@ -27,7 +27,7 @@ internal class Program
                     Console.WriteLine("Enter car name:");
                     string carName = Console.ReadLine();
                     car car = new car { BanId = banid, CarName = carName };
-                    rentCar.AddCar(car);
+                    rentCar.AddCar(car,banid);
                     break;
 
                 case 2:
@@ -42,7 +42,7 @@ internal class Program
                     Console.WriteLine("Enter customer name:");
                     string customerName = Console.ReadLine();
                     Customer customer = new Customer { CustomerId = customerId, Name = customerName };
-                    rentCar.AddCustomer(customer);
+                    rentCar.AddCustomer(customer,customerId);
                     break;
 
                 case 4:
@@ -52,11 +52,12 @@ internal class Program
                     break;
 
                 case 5:
-                    Console.WriteLine("Enter customer ID:");
-                    int rentCustomerId = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Enter car ID to rent:");
                     int rentCarId = Convert.ToInt32(Console.ReadLine());
-                    rentCar.RentACar(rentCustomerId, rentCarId);
+                    Console.WriteLine("Enter customer ID:");
+                    int rentCustomerId = Convert.ToInt32(Console.ReadLine());
+                
+                    rentCar.RentACar(rentCarId,rentCustomerId);
                     break;
 
                 case 6:
@@ -64,7 +65,7 @@ internal class Program
                     int returnCustomerId = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Enter car ID to return:");
                     int returnCarId = Convert.ToInt32(Console.ReadLine());
-                    rentCar.ReturnCar(returnCustomerId, returnCarId);
+                    rentCar.ReturnCar(returnCarId,returnCustomerId);
                     break;
 
                 case 0:
