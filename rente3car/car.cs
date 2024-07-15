@@ -21,11 +21,11 @@ namespace rente3car
         public string Name { get; set; }
         public int CustomerId { get; set; }
         public int CarCount { get; set; }
-        public car[] RentedCars { get; set; }
+        public List<car> RentedCars { get; set; }
 
         public Customer()
         {
-            RentedCars = new car[3];
+            RentedCars = new List<car>();
             CarCount = 0;
         }
     }
@@ -34,14 +34,14 @@ namespace rente3car
     {
         public int CarCount { get; set; }
         public int CustomerCount { get; set; }
-        public car[] Cars { get; set; }
-        public Customer[] Customers { get; set; }
+        public List<car> Cars { get; set; }
+        public List<Customer> Customers { get; set; }
 
         public RentCar()
         {
             CarCount = 0;
-            Cars = new car[50];
-            Customers = new Customer[100];
+            Cars = new List<car>();
+            Customers = new List<Customer>();
             CustomerCount = 0;
         }
 
@@ -61,8 +61,7 @@ namespace rente3car
      
             if (CarCount < 50)
             {
-                Cars[CarCount] = car;
-                CarCount++;
+                Cars.Add(car);
             }
             else
             {
@@ -73,20 +72,14 @@ namespace rente3car
         public void RemoveCar(int banID)
         {
         
-            bool check = false;
-            for (int i = 0; i < Cars.Length; i++)
-            {
-                if (Cars[i] != null && Cars[i].BanId == banID)
-                {
-                    Cars[i] = null;
-                    check = true;
-                    Console.WriteLine("silindi");
-                    break;
-                }
+          car removerCar=Cars.Find(c=> c.BanId == banID);
+            if (removerCar != null) { 
+            Cars.Remove(removerCar);
+                Console.WriteLine("Masin silindi");
             }
-            if (!check)
+            else
             {
-                Console.WriteLine("Bu ID ile car mövcud deyil.");
+                Console.WriteLine("Bu ID ilə maşın mövcud deyil.");
             }
         }
 
@@ -102,142 +95,85 @@ namespace rente3car
             }
             if (CustomerCount < 100)
             {
-                Customers[CustomerCount] = customer;
-                CustomerCount++;
+                Customers.Add(customer);
             }
             else
             {
                 Console.WriteLine("Cannot add more than 100 customers.");
             }
         }
+     
+
+
+
         public void RemoveCustomer(int customerID)
         {
-            bool check = false;
-            for (int i = 0; i < Customers.Length; i++)
+            Customer customerToRemove = Customers.Find(c => c.CustomerId == customerID);
+            if (customerToRemove != null)
             {
-                if ( Customers[i]!=null && Customers[i].CustomerId == customerID)
-                {
-                    Customers[i] = null;
-                    check = true;
-                    Console.WriteLine("silindi");
-                    break;
-                }
+                Customers.Remove(customerToRemove);
+                Console.WriteLine("Müşteri silindi.");
             }
-            if (!check)
+            else
             {
-                Console.WriteLine("Bu ID ile müşteri mövcud deyil.");
+                Console.WriteLine("Bu ID ilə müşteri mövcud deyil.");
             }
         }
-
-
-
-
 
         public void RentACar(int banID, int customerID)
         {
-            bool carFound = false;
-
-
-            foreach (var item in Cars)
+            car carToRent = Cars.Find(c => c.BanId == banID && !c.IsRented);
+            if (carToRent == null)
             {
-                if (item != null && item.BanId == banID && !item.IsRented)
-                {
-                    item.IsRented = true;
-                    carFound = true;
-                    break;
-                }
-            }
-
-
-            if (!carFound)
-            {
-                Console.WriteLine("bele masin movcu deyil ve yada icareye verilib");
+                Console.WriteLine("Belə maşın mövcud deyil və ya icarəyə verilib.");
                 return;
             }
 
-
-            foreach (var customer in Customers)
+            Customer customer = Customers.Find(c => c.CustomerId == customerID);
+            if (customer == null)
             {
-                if (customer != null && customer.CustomerId == customerID)
-                {
-
-                    if (customer.CarCount < 3)
-                    {
-
-                        for (int i = 0; i < customer.RentedCars.Length; i++)
-                        {
-                            if (customer.RentedCars[i] == null)
-                            {
-
-                                car rentedCar = Array.Find(Cars, c => c != null && c.BanId == banID);
-                                if (rentedCar != null)
-                                {
-                                    customer.RentedCars[i] = rentedCar;
-                                    customer.CarCount++;
-                                    Console.WriteLine("Maşın müşteriye uğurla kiraye verildi.");
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Müşteri maksimum maşın limitine çatıb.");
-                        return;
-                    }
-                }
+                Console.WriteLine("Belə bir müşteri tapılmadı.");
+                return;
             }
 
-
-            Console.WriteLine("Bele bir müşteri tapılmadı.");
+            if (customer.RentedCars.Count < 3)
+            {
+                carToRent.IsRented = true;
+                customer.RentedCars.Add(carToRent);
+                Console.WriteLine("Maşın müşteriyə uğurla icarəyə verildi.");
+            }
+            else
+            {
+                Console.WriteLine("Müşteri maksimum maşın limitinə çatıb.");
+            }
         }
+
+
 
         public void ReturnCar(int banID, int customerID)
         {
-            bool carFound = false;
-
-
-            foreach (var item in Cars)
+            car carToReturn = Cars.Find(c => c.BanId == banID);
+            if (carToReturn == null)
             {
-                if (item != null && item.BanId == banID)
-                {
-                    item.IsRented = false;
-                    carFound = true;
-                    break;
-                }
-            }
-
-            if (!carFound)
-            {
-                Console.WriteLine("Bele bir maşın tapılmadı.");
+                Console.WriteLine("Belə bir maşın tapılmadı.");
                 return;
             }
 
-
-            bool customerFound = false;
-            foreach (var customer in Customers)
+            Customer customer = Customers.Find(c => c.CustomerId == customerID);
+            if (customer == null)
             {
-                if (customer != null && customer.CustomerId == customerID)
-                {
-                    customerFound = true;
-
-                    for (int i = 0; i < customer.RentedCars.Length; i++)
-                    {
-                        if (customer.RentedCars[i] != null && customer.RentedCars[i].BanId == banID)
-                        {
-                            customer.RentedCars[i] = null;
-                            customer.CarCount--;
-                            Console.WriteLine("Maşın icaredən qaytarıldı.");
-                            return;
-                        }
-                    }
-                }
+                Console.WriteLine("Belə bir müşteri tapılmadı.");
+                return;
             }
 
-
-            if (!customerFound)
+            if (customer.RentedCars.Remove(carToReturn))
             {
-                Console.WriteLine("Bele bir müşteri tapılmadı.");
+                carToReturn.IsRented = false;
+                Console.WriteLine("Maşın icarədən qaytarıldı.");
+            }
+            else
+            {
+                Console.WriteLine("Müşterinin belə bir maşını icarəyə götürmədiyi tapılmadı.");
             }
         }
 

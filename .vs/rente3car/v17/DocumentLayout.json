@@ -28,11 +28,15 @@
               "RelativeDocumentMoniker": "rente3car\\car.cs",
               "ToolTip": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\car.cs",
               "RelativeToolTip": "rente3car\\car.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAH8AAAAsAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T14:04:42.963Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
@@ -42,7 +46,7 @@
               "RelativeDocumentMoniker": "rente3car\\Program.cs",
               "ToolTip": "C:\\Users\\Mirtalib\\source\\repos\\rente3car\\rente3car\\Program.cs",
               "RelativeToolTip": "rente3car\\Program.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAkwCwAAAA7AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T13:59:53.737Z",
               "EditorCaption": ""
